@@ -1,11 +1,21 @@
-function convert(input) {
-  if (!input) return;
+const inputData = {
+  deviceInfo: {
+    deviceName: 'A1',
+    deviceProfileName: 'P1',
+    devEui: '1000000000000001',
+  },
+  time: '2023-05-22T07:47:05.404859+00:00',
+  data: 'AUVdAiIOTARoIA==',
+};
+
+function convert(dataToConvert) {
+  if (!dataToConvert) return;
 
   const {
     deviceInfo: { deviceName, deviceProfileName, devEui },
     time,
     data,
-  } = input;
+  } = dataToConvert;
 
   //Timestamp (ts) Conversion
   const timeStamp = Date.parse(time);
@@ -49,3 +59,5 @@ function channelsParse(arr) {
     return ['0x' + newArr[0], '0x' + newArr[1], '0x' + arr.join('')];
   }
 }
+
+console.log(convert(inputData));
